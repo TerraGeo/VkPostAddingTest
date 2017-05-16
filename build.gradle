@@ -1,0 +1,29 @@
+group 'SuperTask'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'org.testng', name: 'testng', version: '6.10'
+    compile group: 'com.codeborne', name: 'selenide', version: '4.2'
+    compile group: 'com.relevantcodes', name: 'extentreports', version: '2.41.2'
+    compile group: 'ru.yandex.qatools.properties', name: 'properties-loader', version: '1.6'
+}
+
+task vkAddPosts (type : Test){
+    useTestNG(){
+        suites 'src/test/resources/testRunner.xml'
+    }
+}
+
+/*
+test {
+    systemProperty "browser", "chrome"
+    systemProperty "webdriver.driver.chrome", "$projectDir/src/main/resources/drivers/chromedriver.exe"
+}*/
